@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import Table from '@/components/table'
 import TablePlaceholder from '@/components/table-placeholder'
 import ExpandingArrow from '@/components/expanding-arrow'
+import Api from '@/components/api'
 
 export const dynamic = 'force-dynamic'
 
@@ -22,6 +23,12 @@ export default function Home() {
       </h1>
       <Suspense fallback={<TablePlaceholder />}>
         <Table />
+      </Suspense>
+      <Suspense fallback={<TablePlaceholder />}>
+        <Api
+          apiName = 'testApi1'
+          apiUrl = '/api/utils/testApi1'
+        />
       </Suspense>
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         <Link
