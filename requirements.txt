@@ -3,4 +3,4 @@ Werkzeug==2.3.7
 Flask==2.2.2
 Python-IO
 requests
-CORS
+flask_cors
