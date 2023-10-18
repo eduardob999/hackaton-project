@@ -1,5 +1,6 @@
 from flask import Flask
-from api.utils.Test import *
+from api.utils.testApi1 import *
+from api.utils.testApi2 import *
 
 app = Flask(__name__)
 
@@ -7,10 +8,13 @@ app = Flask(__name__)
 def apiMain():
     return 'main'
 
-@app.route('/api/utils/Test')
-def apiTest():
-    answer = test()
-    return answer
+@app.route('/api/utils/testApi1')
+def mainApi1():
+    return testApi1()
+
+@app.route('/api/utils/testApi2')
+def mainApi2():
+    return testApi2()
 
 if __name__=='__main__':
     app.run()
