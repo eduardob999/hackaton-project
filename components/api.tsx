@@ -5,6 +5,7 @@ import axios from 'axios';
 interface Api {
   apiName: string;
   apiUrl: string;
+  queryParameters?: object; // Define the query parameters as an object
 }
 
 export default function Api(props: Api) {
@@ -14,7 +15,9 @@ export default function Api(props: Api) {
 
   useEffect(() => {
     // Make the HTTP GET request when the component mounts
-    axios.get(props.apiUrl)
+    axios.get(props.apiUrl, {
+      params: props.queryParameters, // Pass query parameters as an object
+    })
       .then(response => {
         setData(response.data);
         setLoading(false);
@@ -23,7 +26,7 @@ export default function Api(props: Api) {
         setError(err instanceof Error ? err.message : 'An error occurred');
         setLoading(false);
       });
-  }, []);
+  }, [props.apiUrl, props.queryParameters]); // Include props in the dependency array to update the request when they change
 
   return (
     <div className="bg-white/30 p-12 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">

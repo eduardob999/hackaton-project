@@ -9,6 +9,16 @@ import Api from '@/components/api'
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
+
+  const apiProps = {
+    apiName: 'testApi1',
+    apiUrl: '/api/utils/testApi1',
+    queryParameters: {
+      param1: 'value1',
+      param2: 'value2',
+    },
+  };
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <Link
@@ -25,10 +35,7 @@ export default function Home() {
         <Table />
       </Suspense>
       <Suspense fallback={<TablePlaceholder />}>
-        <Api
-          apiName = 'testApi1'
-          apiUrl = '/api/utils/testApi1'
-        />
+        <Api {...apiProps} />
       </Suspense>
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         <Link
