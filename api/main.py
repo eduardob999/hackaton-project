@@ -7,7 +7,10 @@ app = Flask(__name__)
 def apiMain():
     return 'main'
 
-@app.route('/api/test')
+@app.route('/api/Test')
 def apiTest():
     answer = test()
     return answer
+
+if __name__=='__main__':
+    app.run()
