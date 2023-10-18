@@ -1,5 +1,5 @@
 from flask import Flask
-from Test import *
+from api.utils.Test import *
 
 app = Flask(__name__)
 
@@ -7,7 +7,7 @@ app = Flask(__name__)
 def apiMain():
     return 'main'
 
-@app.route('/api/Test')
+@app.route('/api/utils/Test')
 def apiTest():
     answer = test()
     return answer
