@@ -5,10 +5,31 @@ import Table from '@/components/table'
 import TablePlaceholder from '@/components/table-placeholder'
 import ExpandingArrow from '@/components/expanding-arrow'
 import Api from '@/components/api'
+import FullWidthIframe from '@/components/FullWidthIframe'
+import UserForm from '@/components/UserForm'
+import { PrismaClient } from '@prisma/client';
 
 export const dynamic = 'force-dynamic'
+const prisma = new PrismaClient(); // Create an instance of the Prisma client
 
 export default function Home() {
+
+  const handleUserSubmit = async (name: string, email: string, image: string) => {
+  try {
+    // Use Prisma to create a new user entry
+    const newUser = await prisma.users.create({
+      data: {
+        name,
+        email,
+        image,
+      },
+    });
+
+    console.log('New user created:', newUser);
+  } catch (error) {
+    console.error('Error creating user:', error);
+  }
+};
 
   const api1Props = {
     apiName: 'testApi1',
@@ -36,15 +57,19 @@ export default function Home() {
       <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
         Hackaton Project
       </h1>
+      {/* deactivated component */ false && <FullWidthIframe url="https://eduardob999.github.io/hackaton-slides/" />}
       <Suspense fallback={<TablePlaceholder />}>
         <Table />
       </Suspense>
       <Suspense fallback={<TablePlaceholder />}>
         <Api key={1} {...api1Props} />
       </Suspense>
-      <Suspense fallback={<TablePlaceholder />}>
+      {/* deactivated component */ false && <Suspense fallback={<TablePlaceholder />}>
         <Api key={2} {...api2Props} />
-      </Suspense>
+      </Suspense>}
+      {/* deactivated component */ false && <Suspense fallback={<TablePlaceholder />}>
+        <UserForm onUserSubmit={handleUserSubmit} />
+      </Suspense>}
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         <Link
           href="https://vercel.com/postgres"
