@@ -20,10 +20,10 @@ export default function Home() {
     },
   };
 
-  const api2Props = {
-    apiName: 'LlamaAiAPI',
-    apiUrl: '/api/utils/testApi2',
-  };
+  // const api2Props = {
+  //   apiName: 'LlamaAiAPI',
+  //   apiUrl: '/api/utils/testApi2',
+  // };
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
