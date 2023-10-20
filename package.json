@@ -16,6 +16,8 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@material-tailwind/react": "^2.1.4",
     "@prisma/client": "^5.4.1",
     "@types/ms": "^0.7.32",
     "@types/node": "20.8.3",
