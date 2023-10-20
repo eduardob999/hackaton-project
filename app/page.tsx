@@ -6,28 +6,10 @@ import TablePlaceholder from '@/components/table-placeholder'
 import ExpandingArrow from '@/components/expanding-arrow'
 import Api from '@/components/api'
 import FullWidthIframe from '@/components/FullWidthIframe'
-import UserForm from '@/components/UserForm'
 
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
-
-  const handleUserSubmit = async (name: string, email: string, image: string) => {
-  try {
-    // Use Prisma to create a new user entry
-    const newUser = await prisma.users.create({
-      data: {
-        name,
-        email,
-        image,
-      },
-    });
-
-    console.log('New user created:', newUser);
-  } catch (error) {
-    console.error('Error creating user:', error);
-  }
-};
 
   const api1Props = {
     apiName: 'testApi1',
@@ -80,9 +62,6 @@ export default function Home() {
       </Suspense>
       {/* deactivated component */ false && <Suspense fallback={<TablePlaceholder />}>
         <Api key={2} {...api2Props} />
-      </Suspense>}
-      {/* deactivated component */ false && <Suspense fallback={<TablePlaceholder />}>
-        <UserForm onUserSubmit={handleUserSubmit} />
       </Suspense>}
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         <Link
