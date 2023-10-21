@@ -1,13 +1,11 @@
-"use client"
 import { Suspense } from "react";
 import TablePlaceholder from "@/components/table-placeholder";
-import { SimpleRegistrationForm } from "@/components/registrationForm";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center col-span-2">
+    <main className="relative flex min-h-screen flex-col items-center justify-center">
       <Suspense fallback={<TablePlaceholder />}>
-        <SimpleRegistrationForm />
+        <h1>Test</h1>
       </Suspense>
     </main>
   )
