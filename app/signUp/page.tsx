@@ -1,3 +1,4 @@
+"use client"
 import { Suspense } from "react";
 import TablePlaceholder from "@/components/table-placeholder";
 import Link from "next/link";
