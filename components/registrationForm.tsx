@@ -12,27 +12,7 @@ export function SimpleRegistrationForm() {
   const [email, setEmail] = useState("");
 
   const handleSignUp = async () => {
-    const body = { name: name, email: email }
-    const myRequest = new Request("/signUp/api", {
-      method: "POST",
-      body: JSON.stringify(body),
-    });
-    window.location.href = "/"; // Replace with your actual homepage URL
-    fetch(myRequest)
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        } else {
-          throw new Error("Something went wrong on api server!");
-        }
-      })
-      .then((response) => {
-        console.debug(response);
-        // ...
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    //
   };
 
   return (
