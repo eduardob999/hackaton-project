@@ -2,9 +2,15 @@ import { Suspense } from "react";
 import TablePlaceholder from "@/components/table-placeholder";
 import Link from "next/link";
 import ExpandingArrow from "@/components/expanding-arrow";
-import { SimpleRegistrationForm } from "@/components/registrationForm";
+import UserForm from "@/components/UserForm";
 
 export default function Home() {
+  const handleUserSubmit = (name: string, email: string, image: string) => {
+    // Here, you can send the user data to your Prisma API or perform other actions.
+    // For simplicity, we'll just log the data to the console.
+    console.log('Submitted user data:', { name, email, image });
+  };
+  
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <Link
@@ -15,7 +21,7 @@ export default function Home() {
         <ExpandingArrow />
       </Link>
       <Suspense fallback={<TablePlaceholder />}>
-        <SimpleRegistrationForm />
+        <UserForm onUserSubmit={handleUserSubmit} />
       </Suspense>
     </main>
   )
