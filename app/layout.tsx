@@ -4,9 +4,9 @@ import { NavbarSimple } from '@/components/widgets/navbar'
 
 export const metadata = {
   metadataBase: new URL('https://postgres-prisma.vercel.app'),
-  title: 'Hackaton Project',
+  title: 'IntiTex',
   description:
-    'Hackaton Project',
+    'Interpretador de texto basado en IA',
 }
 
 const inter = Inter({

@@ -17,7 +17,7 @@ function NavList() {
         className="p-1 font-medium"
       >
         <a href="/" className="flex items-center hover:text-blue-500 transition-colors">
-          Home
+          Página Principal
         </a>
       </Typography>
       <Typography
@@ -27,10 +27,10 @@ function NavList() {
         className="p-1 font-medium"
       >
         <a href="/signUp" className="flex items-center hover:text-blue-500 transition-colors">
-          Sign Up
+          Ingresa
         </a>
       </Typography>
-      <Typography
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -49,7 +49,7 @@ function NavList() {
         <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
           Docs
         </a>
-      </Typography>
+      </Typography> */}
     </ul>
   );
 }
@@ -77,7 +77,7 @@ export function NavbarSimple() {
           variant="h6"
           className="mr-4 cursor-pointer py-1.5"
         >
-          Hackaton Project
+          IntiTex
         </Typography>
         <div className="hidden lg:block">
           <NavList />

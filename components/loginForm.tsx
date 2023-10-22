@@ -7,23 +7,23 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export function SimpleRegistrationForm() {
+export function SimpleLogInForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSignUp = async () => {
     const body = { name: name, email: email }
-    const myRequest = new Request("/signUp/api", {
+    const myRequest = new Request("/api", {
       method: "POST",
       body: JSON.stringify(body),
     });
-    window.location.href = "/"; // Replace with your actual homepage URL
     fetch(myRequest)
       .then((response) => {
         if (response.status === 200) {
+          window.location.href = "./"+email+"/dashboard";
           return response.json();
         } else {
-          throw new Error("Something went wrong on api server!");
+          throw new Error("Something went wrong on the API server!");
         }
       })
       .then((response) => {
@@ -35,13 +35,15 @@ export function SimpleRegistrationForm() {
       });
   };
 
+  const isButtonDisabled = name === "" || email === "";
+
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        Sign Up
+        Log In
       </Typography>
       <Typography color="gray" className="mt-1 font-normal">
-        Nice to meet you! Enter your details to register.
+        Nice to meet you! Enter your details to log in.
       </Typography>
       <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
         <div className="mb-1 flex flex-col gap-6">
@@ -74,14 +76,13 @@ export function SimpleRegistrationForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <Button className="mt-6" fullWidth onClick={handleSignUp}>
-          Sign Up
+        <Button className="mt-6" fullWidth onClick={handleSignUp} disabled={isButtonDisabled}>
+          Log In
         </Button>
         <Typography color="gray" className="mt-4 text-center font-normal">
-          Already have an account?{" "}
-          <a href="#" className="font-medium text-gray-900">
-            Sign In
-          </a>
+          Don't have an account?{" "}
+          <a href="/signUp" className="font-medium text-gray-900">
+            Sign Up          </a>
         </Typography>
       </form>
     </Card>

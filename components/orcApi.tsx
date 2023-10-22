@@ -6,7 +6,6 @@ interface Api {
   apiName: string;
   apiUrl: string;
   queryParameters?: object; // Define the query parameters as an object
-  onDataReceived?: (data: any) => void; // Callback function for receiving data
 }
 
 export default function Api(props: Api) {
@@ -22,9 +21,6 @@ export default function Api(props: Api) {
       .then(response => {
         setData(response.data);
         setLoading(false);
-        if (props.onDataReceived) {
-          props.onDataReceived(response.data); // Call the callback function with data
-        }
       })
       .catch(err => {
         setError(err instanceof Error ? err.message : 'An error occurred');

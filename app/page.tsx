@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
-import Table from '@/components/table'
 import TablePlaceholder from '@/components/table-placeholder'
-
-import Api from '@/components/api'
+import FullWidthIframe from '@/components/FullWidthIframe'
+import ArrowLink from '@/components/widgets/arrowLink'
 
 export const dynamic = 'force-dynamic'
 
@@ -26,30 +25,13 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
-      <h1 className="pt-4 pb-8 bg-gradient-to-br from-black via-[#171717] to-[#575757] bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-        Hackaton Project
-      </h1>
       <Suspense fallback={<TablePlaceholder />}>
-        <Table />
+        <FullWidthIframe url='https://slides.com/arazanibalcazar/palette-ff6f30/embed' />
       </Suspense>
-      <Suspense fallback={<TablePlaceholder />}>
-        <Api key={1} {...api1Props} />
-      </Suspense>
+      <br/>
+      <ArrowLink />
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
-        <Link
-          href="https://vercel.com/postgres"
-          className="font-medium underline underline-offset-4 hover:text-black transition-colors"
-        >
-          Vercel Postgres
-        </Link>{' '}
-        demo with{' '}
-        <Link
-          href="https://prisma.io"
-          className="font-medium underline underline-offset-4 hover:text-black transition-colors"
-        >
-          Prisma
-        </Link>{' '}
-        as the ORM. <br /> Built with{' '}
+        Built with{' '}
         <Link
           href="https://nextjs.org/docs"
           className="font-medium underline underline-offset-4 hover:text-black transition-colors"
