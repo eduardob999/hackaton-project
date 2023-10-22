@@ -59,6 +59,9 @@ const FileUpload: React.FC<FileUploadProps> = ({ setFileLoaded, onFileSelect }) 
         <div className="space-y-1">
           <h2 className="text-xl font-semibold">Cargue una imagen o un pdf:</h2>
           <br />
+            <h3 className="text-x0.7">- El archivo no debe exeder 1mb en tamaño</h3>
+            <h3 className="text-x0.7">- Los archivos de tipo pdf no tbene tener más de 3 páginas</h3>
+          <br />
           <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
             type="file"
             onChange={handleFileChange}

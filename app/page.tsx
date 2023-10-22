@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import TablePlaceholder from '@/components/table-placeholder'
 import FullWidthIframe from '@/components/FullWidthIframe'
-import ArrowLink from '@/components/widgets/arrowLink'
 import ExpandingArrow from '@/components/expanding-arrow'
 
 export const dynamic = 'force-dynamic'
