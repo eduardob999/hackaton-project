@@ -1,8 +1,8 @@
-## IntiText Ai Chatbot y recopilador de datos 
+# IntiText Ai Chatbot y recopilador de datos 
 
-# Reto II: Uso de PNL y LLM para el resumen de artículos y minería de datos:
+## Reto II: Uso de PNL y LLM para el resumen de artículos y minería de datos:
 
-Empresa Retadora: INAIT SA. Lausanne Suiza
+#### Empresa Retadora: INAIT SA. Lausanne Suiza
 
 
 Equipo: IntiTEX AI
