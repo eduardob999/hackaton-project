@@ -29,13 +29,22 @@ export default function Home() {
         <FullWidthIframe url='https://slides.com/arazanibalcazar/palette-ff6f30/embed' />
       </Suspense>
       <br/>
-      <Link
-        href="/signUp"
-        className="group mt-20 sm:mt-0 rounded-full flex space-x-1 bg-white/30 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-20 py-4 hover:shadow-lg active:shadow-sm transition-all"
-      >
-        <p>¡Ingresa ahora!</p>
-        <ExpandingArrow />
-      </Link>
+      <div className="columns-2">
+        <Link
+          href="/signUp"
+          className="group mt-20 sm:mt-0 rounded-full flex space-x-1 bg-white/30 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-20 py-4 hover:shadow-lg active:shadow-sm transition-all"
+        >
+          <p>Chatbot AI</p>
+          <ExpandingArrow />
+        </Link>
+        <Link
+          href="/search"
+          className="group mt-20 sm:mt-0 rounded-full flex space-x-1 bg-white/30 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-20 py-4 hover:shadow-lg active:shadow-sm transition-all"
+        >
+          <p>Buscador AI</p>
+          <ExpandingArrow />
+        </Link>
+      </div>
       <p className="font-light text-gray-600 w-full max-w-lg text-center mt-6">
         Desarrollado para{' '}
         <Link
