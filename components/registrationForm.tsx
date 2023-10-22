@@ -46,8 +46,7 @@ export function SimpleRegistrationForm() {
               Inicio de Sesión
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
-              Al llenar el formulario guardaremos tus datos solo para evitar <br />
-              el uso abusivo del sistema.
+              Ingresa al sistema con tu correo y un combre de usuario
             </Typography>
             <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
               <div className="mb-1 flex flex-col gap-6">
@@ -80,7 +79,7 @@ export function SimpleRegistrationForm() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <Button className="mt-6" fullWidth onClick={handleSignUp} disabled={isButtonDisabled}>
+              <Button className="mt-6 bg-slate-200" fullWidth onClick={handleSignUp} disabled={isButtonDisabled}>
                 Ingresar
               </Button>
             </form>

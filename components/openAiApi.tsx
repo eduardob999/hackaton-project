@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link'
-import ExpandingArrow from '@/components/expanding-arrow.tsx'
+import ExpandingArrow from '@/components/expanding-arrow'
 
 interface Api {
   apiName: string;

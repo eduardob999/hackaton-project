@@ -90,7 +90,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ setFileLoaded, onFileSelect }) 
           />
           <br />
           <br />
-          <Button className="mt-6" fullWidth onClick={handleUpload} disabled={!selectedFile || uploading}>
+          <Button className="mt-6 bg-slate-200" fullWidth onClick={handleUpload} disabled={!selectedFile || uploading}>
             Comenzar
           </Button>
         </div>
