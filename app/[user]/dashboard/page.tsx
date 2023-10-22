@@ -4,18 +4,21 @@ import FileUpload from '@/components/fileUpload/fileUploadComponent';
 import { Suspense } from "react"
 import TablePlaceholder from "@/components/table-placeholder"
 import Api from '@/components/api'
+import OpenAiApi from '@/components/openAiApi'
 
 export default function Home() {
   const [fileLoaded, setFileLoaded] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+  const [selectedTextContent, setSelectedTextContent] = useState<string | null>(null);
   const [api1Data, setApi1Data] = useState(null);
 
-  const handleFileSelect = (filename: string | null) => {
-    setSelectedFileName(filename);
+  const handleFileSelect = (fileName: string | null, textContent: string) => {
+    setSelectedFileName(fileName);
+    setSelectedTextContent(textContent);
   };
 
   const api1Props = {
-    apiName: 'ocrApi',
+    apiName: 'Interpretando el texto',
     apiUrl: '/api/utils/ocrApi',
     queryParameters: {
       name: selectedFileName,
@@ -24,10 +27,11 @@ export default function Home() {
   };
 
   const api2Props = {
-    apiName: 'Resumen del contenido',
+    apiName: 'Respuesta de IntiText AI',
     apiUrl: '/api/utils/openAi',
     queryParameters: {
-      prompt: 'do a resume of the next info: ' + api1Data,
+      text: api1Data,
+      prompt: selectedTextContent,
     },
   };
   
@@ -35,15 +39,12 @@ export default function Home() {
     <main className="relative flex min-h-screen flex-col items-center justify-center">
         {!selectedFileName && <Suspense fallback={<TablePlaceholder />}>
           <FileUpload setFileLoaded={setFileLoaded} onFileSelect={handleFileSelect} />
-          {fileLoaded && selectedFileName && (
-            <p>Selected File: {selectedFileName}</p>
-          )}
         </Suspense>}
         {selectedFileName && !api1Data && <Suspense fallback={<TablePlaceholder />}>
-          <Api key={1} {...api1Props} onDataReceived={setApi1Data} />
+          <Api {...api1Props} onDataReceived={setApi1Data} />
         </Suspense>}
         {api1Data && <Suspense fallback={<TablePlaceholder />}>
-          <Api key={2} {...api2Props} />
+          <OpenAiApi {...api2Props} />
         </Suspense>}
     </main>
   )

@@ -11,14 +11,17 @@ openai.api_key = "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"
 openai.Model.list()
 
 # openAi
-def openAi(promptText="Tell me that I didn't insert a valid text"):
-    response = openai.Completion.create(
-        model='text-davinci-002',
-        prompt=promptText,
-        max_tokens=500,
-        temperature=0.8
+def openAi(text="(the user didn't insert any text)", prompt="tell the user that he needs to make a question about the text"):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        max_tokens=3000,
+        temperature=0.8,
+        messages = [{"role": "system", "content" : "You are IntiTex Ai, a large language model trained to resume and translate documents. Answer as concisely as possible, and strictly in spanish. The chat is meant to respond just a single question.\nKnowledge cutoff: 2021-09-01\nCurrent date: 2023-03-02"},
+        {"role": "user", "content" : text},
+        {"role": "assistant", "content" : "¿Que quieres que haga con ese texto?"},
+        {"role": "user", "content" : prompt}]
     )
-    return(response.choices[0].text)
+    return(response.choices[0].message.content)
 
 
 # Ocr Api
@@ -119,18 +122,18 @@ def ocrApi():
     # Extract the specific property you want (e.g., 'parsed_text' if it exists in the JSON)
     single_property = parsed_response.get('ParsedResults', [])[0].get('ParsedText', None)
 
-    if single_property is not None:
+    if single_property is not None and len(single_property) != 0:
         # Return the extracted property
         return single_property
     else:
-        return 'error: Property not found in the JSON response'
+        return 'Error: el archivo cargado parece no cumplir con los requisitos solicitados.'
 
 @app.route('/api/utils/openAi', methods=['GET'])
 def openAiApi():
     # Access the query parameters from the GET request
+    text = request.args.get('text')
     prompt = request.args.get('prompt')
-    print(prompt)
-    response = openAi(prompt)
+    response = openAi(text, prompt)
     return (response)
 
 if __name__ == '__main__':

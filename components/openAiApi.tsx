@@ -1,6 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link'
+import ExpandingArrow from '@/components/expanding-arrow.tsx'
 
 interface Api {
   apiName: string;
@@ -9,7 +11,7 @@ interface Api {
   onDataReceived?: (data: any) => void; // Callback function for receiving data
 }
 
-export default function Api(props: Api) {
+export default function OpenAiApi(props: Api) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,12 +39,32 @@ export default function Api(props: Api) {
       <div className="flex justify-between items-center mb-4">
         <div className="space-y-1">
           <h2 className="text-xl font-semibold">{props.apiName}:</h2>
+          <br />
           {loading ? (
             <p className="text-sm text-gray-500">Cargando...</p>
           ) : error ? (
-            <p className="text-sm text-red-500">Error: {error}</p>
+            <div>
+              <p className="text-sm text-red-500">Error: El texto excede la cantidad de carcateres que pueden procesarse por el sistema</p>
+              <Link
+                  href="javascript:window.location.href=window.location.href"
+                  className="group mt-20 sm:mt-0 rounded-full flex space-x-1 bg-white/30 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-20 py-4 hover:shadow-lg active:shadow-sm transition-all"
+                >
+                  <p>Comienza de nuevo</p>
+                  <ExpandingArrow />
+                </Link>
+            </div>
           ) : (
-            <p className="text-sm text-gray-500">{data}</p>
+            <div>
+              <p className="text-sm text-gray-500">{data}</p>
+              <br />
+              <Link
+                href="javascript:window.location.href=window.location.href"
+                className="group mt-20 sm:mt-0 rounded-full flex space-x-1 bg-white/30 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-20 py-4 hover:shadow-lg active:shadow-sm transition-all"
+              >
+                <p>Comienza de nuevo</p>
+                <ExpandingArrow />
+              </Link>
+            </div>
           )}
         </div>
       </div>
