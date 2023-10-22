@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 import TablePlaceholder from '@/components/table-placeholder'
 import FullWidthIframe from '@/components/FullWidthIframe'
 import ArrowLink from '@/components/widgets/arrowLink'
-import ExpandingArrow from '@/components/expanding-arrow.tsx'
+import ExpandingArrow from '@/components/expanding-arrow'
 
 export const dynamic = 'force-dynamic'
 
@@ -70,7 +70,7 @@ export default function Home() {
 
       <div className="sm:absolute sm:bottom-0 w-full px-20 py-10 flex justify-between">
         <Link
-          href="https://github.com/eduardob999/hackaton-project/"
+          href="https://github.com/eduardob999/hackaton-project/tree/production"
           className="flex items-center space-x-2"
         >
           <Image
