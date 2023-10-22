@@ -4,3 +4,5 @@ Flask==2.2.2
 Python-IO
 requests
 flask_cors
+openai
+requests
